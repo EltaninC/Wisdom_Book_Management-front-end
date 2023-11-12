@@ -43,6 +43,12 @@ const router = createRouter({
             title: '归还记录',
             icon: 'TakeawayBox'
           },
+        },
+        { path: '/appointment', component: () => import('@/components/user/UserAppointment.vue'),
+          meta: {
+            title: '预约记录',
+            icon: 'TakeawayBox'
+          },
         }
       ],
     },

@@ -3,9 +3,10 @@
 
     <el-row :gutter="0">
       <el-button type="primary" @click="dialogFormVisible = true">借书</el-button>
+      <el-button type="primary" @click="bookingFormVisible = true">预定</el-button>
     </el-row>
     <BorrowBook :dialogFormVisible=dialogFormVisible @close="close"></BorrowBook>
-
+    <Booking :bookingFormVisible=bookingFormVisible @close="close"></Booking>
     <el-input
       v-model="msg"
       placeholder="Please input"
@@ -54,17 +55,20 @@
   import { Search } from '@element-plus/icons-vue'
   import BorrowBook from '@/components/user/BorrowBook.vue'
   import { useCookies } from "vue3-cookies"
+  import Booking from "./Booking.vue"
 
   const msg = ref("")
   const select = ref('BookName')
   let books = ref([])
   const dialogFormVisible = ref(false)
+  const bookingFormVisible = ref(false)
   const filterTableData = ref([])
 
   const { cookies } = useCookies();
 
   function close() {
     dialogFormVisible.value=false
+    bookingFormVisible.value=false
     getFilterTableData()
   }
 
